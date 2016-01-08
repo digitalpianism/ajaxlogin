@@ -1,0 +1,16 @@
+{
+  "name": "digitalpianism/ajaxlogin",
+  "type": "magento-module",
+  "license":"OSL-3.0",
+  "description":"Let customers login/logout and register via an AJAX Popup",
+  "require": {
+    "php": ">=5.3",
+    "magento-hackathon/magento-composer-installer": "*"
+  },
+  "authors":[
+    {
+      "name":"Raphael Petrini",
+      "email":"contact@digital-pianism.com"
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+/* window */
+.ajaxlogin-window { border: 1px solid rgba(0, 0, 0, 0.3); background:#fff; z-index:999; padding: 10px; position:absolute; text-align:left;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    outline: none;
+    -webkit-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+    -webkit-background-clip: padding-box;
+    -moz-background-clip: padding-box;
+    background-clip: padding-box;
+}
+
+.ajaxlogin-window .page-title,
+.ajaxlogin-window .page-title span { color:#0A263C; font-size:18px; font-weight: normal; text-align: center}
+.ajaxlogin-window .content { padding:7px; overflow:auto; overflow-x:hidden; }
+.ajaxlogin-window label { width:auto; text-align:left; margin-bottom: 0; }
+.ajaxlogin-window label em { display:none }
+.ajaxlogin-window ul li { line-height: normal; }
+.ajaxlogin-window ul,
+.ajaxlogin-window .form-list { list-style: none; margin: 0; }
+.ajaxlogin-window .form-list li { margin-bottom: 10px }
+.ajaxlogin-window .form-list .input-box { clear:both; }
+.ajaxlogin-window .form-list input.input-text,
+.ajaxlogin-window .form-list textarea { width:100% }
+.ajaxlogin-window .input-box input { margin: 0
+}
+.ajaxlogin-window .input-box .validation-advice { line-height: normal; }
+.ajaxlogin-window .close { position:absolute; top:4px; right:4px; width:16px; height:16px; background:url(../../../images/digitalpianism/ajaxlogin/cancel_round.png) no-repeat 50% 50%; }
+.ajaxlogin-window .close:hover {}
+.ajaxlogin-window .progress-indicator { display: block; text-align: center; float:right}
+.ajaxlogin-window .please-wait { position:static; padding:0; background:none; border:none; margin:0; left:auto; top:auto; }
+.ajaxlogin-window .buttons-set { margin:0; text-align:center; border-top:0 solid #e4e4e4; padding:7px; }
+.ajaxlogin-window .buttons-set a { display: block; }
+.ajaxlogin-window .form-list .input-box{ width:auto }
+.ajaxlogin-window .buttons-set .back-link { display: block; margin: 0; padding: 0; text-align: center; }
+.ajaxlogin-window .buttons-set .back-link a {  }
+.ajaxlogin-window .buttons-set .please-wait
+.ajaxlogin-window .actionbar { padding:10px 10px 0; text-align:right; font-weight:bold; }
+
+#ajaxlogin-mask { background: black; opacity:0.4; -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=40)"; filter:alpha(opacity=40);
+    position:absolute; top:0; left:0; width:100%; height:100%; z-index:990; }
+* html #ajaxlogin-mask { position:absolute; }

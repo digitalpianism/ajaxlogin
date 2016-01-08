@@ -1,0 +1,9 @@
+app/code/community/DigitalPianism/AjaxLogin              app/code/community/DigitalPianism/AjaxLogin             
+app/design/frontend/base/default/layout/digitalpianism   app/design/frontend/base/default/layout/digitalpianism  
+app/design/frontend/base/default/template/digitalpianism app/design/frontend/base/default/template/digitalpianism
+app/etc/modules/DigitalPianism_AjaxLogin.xml             app/etc/modules/DigitalPianism_AjaxLogin.xml            
+app/locale/en_US/DigitalPianism_AjaxLogin.csv            app/locale/en_US/DigitalPianism_AjaxLogin.csv           
+app/locale/fr_FR/DigitalPianism_AjaxLogin.csv            app/locale/fr_FR/DigitalPianism_AjaxLogin.csv           
+skin/frontend/base/default/css/digitalpianism            skin/frontend/base/default/css/digitalpianism           
+skin/frontend/base/default/images/digitalpianism         skin/frontend/base/default/images/digitalpianism        
+skin/frontend/base/default/js/digitalpianism             skin/frontend/base/default/js/digitalpianism            

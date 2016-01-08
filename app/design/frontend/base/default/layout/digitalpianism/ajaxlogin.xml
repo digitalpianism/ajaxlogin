@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout version="0.1.0">
+
+    <default>
+        <reference name="head">
+            <action method="addItem">
+                <type>skin_css</type>
+                <name>css/digitalpianism/ajaxlogin/styles.css</name>
+                <params/>
+            </action>
+            <action method="addItem">
+                <type>skin_js</type>
+                <name>js/digitalpianism/ajaxlogin/script.js</name>
+            </action>
+        </reference>
+        <reference name="before_body_end">
+            <block type="core/template" name="ajaxlogin">
+                <action method="setTemplate" ifconfig="ajaxlogin/options/enable"><template>digitalpianism/ajaxlogin/index.phtml</template></action>
+                <block type="customer/form_register" name="customer_form_register_ajax" template="digitalpianism/ajaxlogin/register.phtml">
+                    <block type="page/html_wrapper" name="customer.form.register.fields.before" as="form_fields_before" translate="label">
+                        <label>Form Fields Before</label>
+                    </block>
+                </block>
+                <block type="persistent/form_remember" name="persistent.remember.me" template="persistent/remember_me.phtml" />
+                <block type="core/template" name="persistent.remember.me.tooltip" template="persistent/remember_me_tooltip.phtml" />
+            </block>
+        </reference>
+    </default>
+
+    <customer_logged_out>
+        <reference name="top.links">
+            <action method="removeLinkByUrl" ifconfig="ajaxlogin/options/enable">
+                <url helper="customer/getLoginUrl"/>
+            </action>
+            <action method="addLink" translate="label title" module="customer" ifconfig="ajaxlogin/options/enable">
+                <label>Log In</label>
+                <url helper="customer/getLoginUrl"/>
+                <title>Log In</title>
+                <prepare/>
+                <urlParams/>
+                <position>100</position>
+                <liParams/>
+                <aParams><class>ajaxlogin-login</class></aParams>
+            </action>
+        </reference>
+    </customer_logged_out>
+
+    <customer_logged_in>
+        <reference name="top.links">
+            <action method="removeLinkByUrl" ifconfig="ajaxlogin/options/enable">
+                <url helper="customer/getLogoutUrl"/>
+            </action>
+            <action method="addLink" translate="label title" module="customer" ifconfig="ajaxlogin/options/enable">
+                <label>Log Out</label>
+                <url helper="customer/getLogoutUrl"/>
+                <title>Log Out</title>
+                <prepare/>
+                <urlParams/>
+                <position>100</position>
+                <liParams/>
+                <aParams><class>ajaxlogin-logout</class></aParams>
+            </action>
+        </reference>
+    </customer_logged_in>
+
+</layout>

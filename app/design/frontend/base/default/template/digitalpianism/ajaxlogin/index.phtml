@@ -1,0 +1,231 @@
+<?php if (!Mage::getSingleton('customer/session')->isLoggedIn()): ?>
+    <div id="ajaxlogin-login-window" style="display: none;">
+        <div class="page-title">
+            <span><?php echo $this->__('Login into your Account') ?></span>
+        </div>
+        <form action="<?php echo $this->getUrl('ajaxlogin/index/login', array('_secure'=>(!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS']==='on'))) ?>" method="post" id="ajaxlogin-login-form">
+            <div class="content">
+                <ul class="form-list">
+                    <li>
+                        <label for="email" class="required"><em>*</em><?php echo $this->__('Email Address') ?></label>
+                        <div class="input-box">
+                            <input type="text" name="login[username]" value="<?php echo $this->htmlEscape($this->getUsername()) ?>" id="email" class="input-text required-entry validate-email" title="<?php echo $this->__('Email Address') ?>" />
+                        </div>
+                    </li>
+                    <li>
+                        <label for="pass" class="required"><em>*</em><?php echo $this->__('Password') ?></label>
+                        <div class="input-box">
+                            <input type="password" name="login[password]" class="input-text required-entry validate-password" id="pass" title="<?php echo $this->__('Password') ?>" />
+                        </div>
+                    </li>
+                    <?php echo $this->getChildHtml('form.additional.info'); ?>
+                </ul>
+            </div>
+            <div class="buttons-set">
+                <button type="button" class="button" title="<?php echo $this->__('Register') ?>" name="noaccount" id="noaccount"><span><span><?php echo $this->__('Register') ?></span></span></button>
+                <button type="submit" class="button" title="<?php echo $this->__('Login') ?>" name="send" id="send2"><span><span><?php echo $this->__('Login') ?></span></span></button>
+				<div class="progress-indicator">
+                    <span class="please-wait" id="login-please-wait" style="display:none;">
+                        <img src="<?php echo $this->getSkinUrl('images/opc-ajax-loader.gif') ?>" class="v-middle" alt=""/>
+                    </span>
+                </div>
+                <a href="<?php echo $this->getForgotPasswordUrl() ?>" class="f-left ajaxlogin-forgot"><?php echo $this->__('Forgot Your Password?') ?></a>
+            </div>
+        </form>
+        <script type="text/javascript">
+            //<![CDATA[
+            var ajaxLoginForm = new VarienForm('ajaxlogin-login-form', true);
+            //]]>
+        </script>
+    </div>
+<?php endif; ?>
+
+<?php if (!Mage::getSingleton('customer/session')->isLoggedIn()): ?>
+    <div id="ajaxlogin-forgot-window" style="display: none;">
+        <div class="page-title">
+            <span><?php echo $this->__('Forgot Your Password?') ?></span>
+        </div>
+        <form action="<?php echo $this->getUrl('ajaxlogin/index/forgotpassword', array('_secure'=>(!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS']==='on'))) ?>" method="post" id="ajaxlogin-forgot-password-form">
+            <div class="content">
+                <?php
+                $customerHelper = Mage::helper('customer');
+                if (method_exists($customerHelper, 'generateResetPasswordLinkToken')) : ?>
+                    <p><?php echo $this->__('Please enter your email address below. You will receive a link to reset your password.') ?></p>
+                <?php else: ?>
+                    <p><?php echo $this->__('Please enter your email below and we will send you a new password.') ?></p>
+                <?php endif; ?>
+                <ul class="form-list">
+                    <li>
+                        <label for="email_address" class="required"><em>*</em><?php echo $this->__('Email Address') ?></label>
+                        <div class="input-box">
+                            <input type="text" name="email" id="email_address" class="input-text required-entry validate-email" value="<?php echo $this->htmlEscape($this->getEmailValue()) ?>" />
+                        </div>
+                    </li>
+                    <?php echo $this->getChildHtml('form.additional.info'); ?>
+                </ul>
+            </div>
+            <div class="buttons-set">
+                <button type="submit" title="<?php echo $this->__('Submit') ?>" id="btn-forgot" class="button"><span><span><?php echo $this->__('Submit') ?></span></span></button>
+				<div class="progress-indicator">
+                    <span class="please-wait" id="forgot-please-wait" style="display:none;">
+                        <img src="<?php echo $this->getSkinUrl('images/opc-ajax-loader.gif') ?>" class="v-middle" alt=""/>
+                    </span>
+                </div>
+                <p class="back-link"><a href="<?php echo $this->helper('customer')->getLoginUrl() ?>" class="ajaxlogin-login"><?php echo $this->__('Back to Login') ?></a></p>
+            </div>
+        </form>
+        <script type="text/javascript">
+            //<![CDATA[
+            var ajaxForgotForm = new VarienForm('ajaxlogin-forgot-password-form', true);
+            //]]>
+        </script>
+    </div>
+<?php endif; ?>
+
+<?php if (!Mage::getSingleton('customer/session')->isLoggedIn()): ?>
+    <div id="ajaxlogin-create-window" style="display: none;">
+        <div class="page-title">
+            <span><?php echo $this->__('Create an Account') ?></span>
+        </div>
+        <form action="<?php echo $this->getUrl('ajaxlogin/index/create', array('_secure'=>(!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS']==='on'))) ?>" method="post" id="ajaxlogin-create-form">
+            <?php echo $this->getChildHtml(); ?>
+        </form>
+        <script type="text/javascript">
+            //<![CDATA[
+            var ajaxCreateForm = new VarienForm('ajaxlogin-create-form', true);
+            //]]>
+        </script>
+    </div>
+<?php endif; ?>
+
+<?php if (Mage::getSingleton('customer/session')->isLoggedIn()): ?>
+    <div id="ajaxlogin-logout-window" style="display: none;">
+        <div class="page-title">
+            <span><?php echo $this->__('Logout from your Account') ?></span>
+        </div>
+        <form action="<?php echo $this->getUrl('ajaxlogin/index/logout', array('_secure'=>(!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS']==='on'))) ?>" method="post" id="ajaxlogin-logout-form">
+            <div class="content">
+               <p><?php echo $this->__('Are you sure you want to log out ?') ?></p>
+            </div>
+            <div class="buttons-set">
+                <button type="submit" class="button" title="<?php echo $this->__('Login') ?>" name="send" id="send2"><span><span><?php echo $this->__('Logout') ?></span></span></button>
+				<div class="progress-indicator">
+                    <span class="please-wait" id="login-please-wait" style="display:none;">
+                        <img src="<?php echo $this->getSkinUrl('images/opc-ajax-loader.gif') ?>" class="v-middle" alt=""/>
+                    </span>
+                </div>
+            </div>
+        </form>
+        <script type="text/javascript">
+            //<![CDATA[
+            var ajaxLogoutForm = new VarienForm('ajaxlogin-logout-form', true);
+            //]]>
+        </script>
+    </div>
+<?php endif; ?>
+
+<?php if (Mage::getConfig()->getModuleConfig('Mage_Persistent')) : ?>
+    <?php
+    $isActive = Mage::getConfig()->getNode('modules/Mage_Persistent/active');
+    if (!$isActive || !in_array((string)$isActive, array('true', '1'))) {
+        return false;
+    }
+    ?>
+
+    <?php if (Mage::helper('persistent/session')->isPersistent() && !Mage::getSingleton('customer/session')->isLoggedIn()): ?>
+        <?php $customer = Mage::helper('persistent/session')->getCustomer(); ?>
+        <div id="persistent-cart-window" style="display:none;">
+            <div class="page-title">
+                <span><?php echo Mage::helper('persistent')->__('Welcome, %s!', Mage::helper('core')->escapeHtml($customer->getName(), null)) ?></span>
+            </div>
+            <div class="content">
+                <p><?php
+                    echo Mage::helper('ajaxlogin')->__(
+                        'You are browsing our store as %s %s',
+                        $customer->getName(),
+                        $this->getLayout()->createBlock('persistent/header_additional')->toHtml()
+                    );
+                    ?></p>
+                <p><?php
+                    $login    = $this->__('Login');
+                    $register = $this->__('Register');
+                    echo Mage::helper('ajaxlogin')->__(
+                        'Please %s or %s a new account to place order.',
+                        "<a href='" . $this->getUrl('customer/account/login') . "' class='ajaxlogin-login'>" . $login . "</a>",
+                        "<a href='" . $this->getUrl('persistent/index/saveMethod') . "' class='ajaxlogin-register'>" . $register . "</a>"
+                    );
+                    ?></p>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+            //<![CDATA[
+            document.observe("dom:loaded", function() {
+                persistentWindow = new AjaxLogin({
+                    triggers: {},
+                    size: {
+                        maxWidth: 400
+                    }
+                });
+                if (!Mage.Cookies.get('hasPersistentBeenClosed'))
+                {
+                    persistentWindow.update($('persistent-cart-window'))
+                        .setModal(0)
+                        .show();
+                }
+            });
+
+            $('persistent-cart-window') && $('persistent-cart-window').up().up().next('.close') && $('persistent-cart-window').up().up().next('.close').observe('click', function(e) {
+                if (!Mage.Cookies.get("hasPersistentBeenClosed"))
+                {
+                    // Create the expiry date
+                    var expiryDate = new Date();
+                    expiryDate.setDate(expiryDate.getDate() + <?php echo ( Mage::helper('persistent')->getLifeTime() / 86400 ) ?>);
+                    // Call the set method
+                    Mage.Cookies.set('hasPersistentBeenClosed', true, expiryDate);
+                }
+            });
+            //]]>
+        </script>
+
+    <?php endif; ?>
+<?php endif; ?>
+
+<script type="text/javascript">
+    document.observe("dom:loaded", function() {
+        var triggers = {
+            login: {
+                el    : $$('.ajaxlogin-login'),
+                event : 'click',
+                window: $('ajaxlogin-login-window'),
+                size: {
+                    maxWidth: 300
+                }
+            },
+            create: {
+                el    : $$('#noaccount'),
+                event : 'click',
+                window: $('ajaxlogin-create-window')
+            },
+            forgot: {
+                el    : $$('.ajaxlogin-forgot'),
+                event : 'click',
+                window: $('ajaxlogin-forgot-window'),
+                size: {
+                    maxWidth: 300
+                }
+            },
+            logout: {
+                el    : $$('.ajaxlogin-logout'),
+                event : 'click',
+                window: $('ajaxlogin-logout-window'),
+                size: {
+                    maxWidth: 300
+                }
+            }
+        };
+        ajaxLoginWindow = new AjaxLogin({
+            triggers: triggers
+        });
+    });
+</script>
