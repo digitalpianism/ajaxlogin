@@ -42,6 +42,19 @@
                 <liParams/>
                 <aParams><class>ajaxlogin-login</class></aParams>
             </action>
+            <action method="removeLinkByUrl" ifconfig="ajaxlogin/options/enable">
+                <url helper="customer/getAccountUrl"/>
+            </action>
+            <action method="addLink" translate="label title" module="customer" ifconfig="ajaxlogin/options/enable">
+                <label>My Account</label>
+                <url helper="customer/getAccountUrl"/>
+                <title>My Account</title>
+                <prepare/>
+                <urlParams/>
+                <position>10</position>
+                <liParams/>
+                <aParams><class>ajaxlogin-login</class></aParams>
+            </action>
         </reference>
     </customer_logged_out>
 

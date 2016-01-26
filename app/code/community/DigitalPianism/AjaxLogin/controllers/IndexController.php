@@ -4,6 +4,18 @@ class DigitalPianism_AjaxLogin_IndexController extends Mage_Core_Controller_Fron
 {
 
     /**
+     * Get Url method
+     *
+     * @param string $url
+     * @param array $params
+     * @return string
+     */
+    protected function _getUrl($url, $params = array())
+    {
+        return Mage::getUrl($url, $params);
+    }
+
+    /**
      * Get Customer Model
      *
      * @return Mage_Customer_Model_Customer
@@ -228,7 +240,11 @@ class DigitalPianism_AjaxLogin_IndexController extends Mage_Core_Controller_Fron
             $errors = $this->_getCustomerErrors($customer);
 
             if (empty($errors)) {
-                $customer->cleanPasswordsValidationData();
+                if (version_compare(Mage::getVersion(),"1.9.1.0",">="))
+                {
+                    // Only from 1.9.1.0
+                    $customer->cleanPasswordsValidationData();
+                }
                 $customer->save();
                 Mage::dispatchEvent('customer_register_success',
                     array('account_controller' => $this, 'customer' => $customer)
