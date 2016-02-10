@@ -2,6 +2,14 @@
 
 Ajax Login &amp; Registration via Popup module for Magento
 
+# Documentation
+
+Everything you need to know can be found here: http://www.digital-pianism.com/en/magento-modules/ajax-popup-login.html
+
+# Magento Connect
+
+https://www.magentocommerce.com/magento-connect/ajax-popup-for-login-registration.html
+
 # Release Notes
 
 ## 0.2.5
