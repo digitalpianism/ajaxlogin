@@ -58,7 +58,15 @@ class DigitalPianism_AjaxLogin_IndexController extends Mage_Core_Controller_Fron
         } else {
             $customerForm->compactData($customerData);
             $customer->setPassword($request->getPost('password'));
-            $customer->setPasswordConfirmation($request->getPost('confirmation'));
+            // Password confirmation field name has changed since 1.9.1.0
+            if (version_compare(Mage::getVersion(),"1.9.1.0",">="))
+            {
+                $customer->setPasswordConfirmation($request->getPost('confirmation'));
+            }
+            else
+            {
+                $customer->setConfirmation($request->getPost('confirmation'));
+            }
             $customerErrors = $customer->validate();
             if (is_array($customerErrors)) {
                 $errors = array_merge($customerErrors, $errors);

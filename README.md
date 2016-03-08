@@ -12,6 +12,10 @@ https://www.magentocommerce.com/magento-connect/ajax-popup-for-login-registratio
 
 # Release Notes
 
+## 0.2.6
+
+- Fix a bug where customer registration would not work on Magento < 1.9.0.1
+
 ## 0.2.5
 
 - Fix a bug where customer registration would not work on Magento < 1.9.1.0
