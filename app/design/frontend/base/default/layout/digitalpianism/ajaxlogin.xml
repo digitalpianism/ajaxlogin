@@ -16,7 +16,7 @@
         <reference name="before_body_end">
             <block type="core/template" name="ajaxlogin">
                 <action method="setTemplate" ifconfig="ajaxlogin/options/enable"><template>digitalpianism/ajaxlogin/index.phtml</template></action>
-                <block type="customer/form_register" name="customer_form_register_ajax" template="digitalpianism/ajaxlogin/register.phtml">
+                <block type="ajaxlogin/customer_form_register" name="customer_form_register_ajax" template="digitalpianism/ajaxlogin/register.phtml">
                     <block type="page/html_wrapper" name="customer.form.register.fields.before" as="form_fields_before" translate="label">
                         <label>Form Fields Before</label>
                     </block>

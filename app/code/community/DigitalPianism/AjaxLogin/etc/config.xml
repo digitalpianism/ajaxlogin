@@ -2,7 +2,7 @@
 <config>
     <modules>
         <DigitalPianism_AjaxLogin>
-            <version>0.2.6</version>
+            <version>0.2.7</version>
         </DigitalPianism_AjaxLogin>
     </modules>
     <global>
@@ -11,6 +11,11 @@
                 <class>DigitalPianism_AjaxLogin_Helper</class>
             </ajaxlogin>
         </helpers>
+        <blocks>
+            <ajaxlogin>
+                <class>DigitalPianism_AjaxLogin_Block</class>
+            </ajaxlogin>
+        </blocks>
     </global>
     <frontend>
         <routers>

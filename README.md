@@ -12,6 +12,10 @@ https://www.magentocommerce.com/magento-connect/ajax-popup-for-login-registratio
 
 # Release Notes
 
+## 0.2.7
+
+- Fix a bug where the meta title of every page would be set to "Create New Customer Account"
+
 ## 0.2.6
 
 - Fix a bug where customer registration would not work on Magento < 1.9.0.1
