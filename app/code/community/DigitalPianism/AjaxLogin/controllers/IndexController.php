@@ -277,7 +277,12 @@ class DigitalPianism_AjaxLogin_IndexController extends Mage_Core_Controller_Fron
             $result['error'] = $this->__('Cannot save the customer.');
         }
 
-        $this->getResponse()->setBody(Mage::helper('core')->jsonEncode($result));
+        $this->getResponse()
+            ->setHeader('Access-Control-Allow-Origin', rtrim(Mage::getUrl(''),'/'))
+            ->setHeader('Access-Control-Allow-Headers', 'Access-Control-Allow-Origin')
+            ->setHeader('Access-Control-Expose-Headers', 'x-json')
+            ->setHeader('Access-Control-Allow-Credentials', 'true')
+            ->setBody(Mage::helper('core')->jsonEncode($result));
     }
 
     public function forgotpasswordAction()
@@ -328,7 +333,12 @@ class DigitalPianism_AjaxLogin_IndexController extends Mage_Core_Controller_Fron
             $result['error'] = Mage::helper('customer')->__('Please enter your email.');
         }
 
-        $this->getResponse()->setBody(Mage::helper('core')->jsonEncode($result));
+        $this->getResponse()
+            ->setHeader('Access-Control-Allow-Origin', rtrim(Mage::getUrl(''),'/'))
+            ->setHeader('Access-Control-Allow-Headers', 'Access-Control-Allow-Origin')
+            ->setHeader('Access-Control-Expose-Headers', 'x-json')
+            ->setHeader('Access-Control-Allow-Credentials', 'true')
+            ->setBody(Mage::helper('core')->jsonEncode($result));
     }
 
     public function loginAction()
@@ -372,7 +382,12 @@ class DigitalPianism_AjaxLogin_IndexController extends Mage_Core_Controller_Fron
             }
         }
 
-        $this->getResponse()->setBody(Mage::helper('core')->jsonEncode($result));
+        $this->getResponse()
+            ->setHeader('Access-Control-Allow-Origin', rtrim(Mage::getUrl(''),'/'))
+            ->setHeader('Access-Control-Allow-Headers', 'Access-Control-Allow-Origin, Access-Control-Allow-Headers, Access-Control-Allow-Credentials')
+            ->setHeader('Access-Control-Expose-Headers', 'x-json')
+            ->setHeader('Access-Control-Allow-Credentials', 'true')
+            ->setBody(Mage::helper('core')->jsonEncode($result));
     }
 
     public function logoutAction()
@@ -387,6 +402,11 @@ class DigitalPianism_AjaxLogin_IndexController extends Mage_Core_Controller_Fron
         $result['redirect'] = Mage::getUrl('customer/account/logoutSuccess', array('_secure' => true));
         $result['success'] = true;
 
-        $this->getResponse()->setBody(Mage::helper('core')->jsonEncode($result));
+        $this->getResponse()
+            ->setHeader('Access-Control-Allow-Origin', rtrim(Mage::getUrl(''),'/'))
+            ->setHeader('Access-Control-Allow-Headers', 'Access-Control-Allow-Origin, Access-Control-Allow-Headers, Access-Control-Allow-Credentials')
+            ->setHeader('Access-Control-Expose-Headers', 'x-json')
+            ->setHeader('Access-Control-Allow-Credentials', 'true')
+            ->setBody(Mage::helper('core')->jsonEncode($result));
     }
 }

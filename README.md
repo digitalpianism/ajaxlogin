@@ -12,6 +12,11 @@ https://www.magentocommerce.com/magento-connect/ajax-popup-for-login-registratio
 
 # Release Notes
 
+## 0.3.0
+
+- Secure all controller calls to use HTTPS
+- Implement CORS to be able to call the controller from HTTP
+
 ## 0.2.7
 
 - Fix a bug where the meta title of every page would be set to "Create New Customer Account"

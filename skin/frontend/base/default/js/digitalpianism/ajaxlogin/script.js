@@ -1,6 +1,13 @@
 /**
- * Created by Raph on 10/11/2014.
+ * Add support for xhrFields to fix CORS
  */
+Ajax.Request.prototype.setRequestHeaders = Ajax.Request.prototype.setRequestHeaders.wrap(function(setHeaders) {
+    setHeaders();
+    if (this.options.xhrFields) {
+        Object.extend(this.transport, this.options.xhrFields);
+    }
+});
+
 AjaxLogin = Class.create();
 AjaxLogin.prototype = {
     initialize: function(config) {
@@ -332,7 +339,22 @@ AjaxLogin.prototype = {
                 .setOpacity(0.5);
 
             new Ajax.Request($('ajaxlogin-login-form').action, {
+                xhrFields: {
+                    withCredentials: true
+                },
+                method: "post",
                 parameters: $('ajaxlogin-login-form').serialize(),
+                onCreate: function(response) {
+                    var t = response.transport;
+                    t.setRequestHeader = t.setRequestHeader.wrap(function(original, k, v) {
+                        if (/^(accept|accept-language|content-language|cookie|access-control-allow-origin|access-control-allow-headers|access-control-allow-credentials)$/i.test(k))
+                            return original(k, v);
+                        if (/^content-type$/i.test(k) &&
+                            /^(application\/x-www-form-urlencoded|multipart\/form-data|text\/plain)(;.+)?$/i.test(v))
+                            return original(k, v);
+                        return;
+                    });
+                },
                 onSuccess: function(transport) {
                     var section = $('ajaxlogin-login-form');
                     if (!section) {
@@ -398,7 +420,22 @@ AjaxLogin.prototype = {
                 .setOpacity(0.5);
 
             new Ajax.Request($('ajaxlogin-create-form').action, {
+                xhrFields: {
+                    withCredentials: true
+                },
+                method: "post",
                 parameters: $('ajaxlogin-create-form').serialize(),
+                onCreate: function(response) {
+                    var t = response.transport;
+                    t.setRequestHeader = t.setRequestHeader.wrap(function(original, k, v) {
+                        if (/^(accept|accept-language|content-language|cookie|access-control-allow-origin|access-control-allow-headers|access-control-allow-credentials)$/i.test(k))
+                            return original(k, v);
+                        if (/^content-type$/i.test(k) &&
+                            /^(application\/x-www-form-urlencoded|multipart\/form-data|text\/plain)(;.+)?$/i.test(v))
+                            return original(k, v);
+                        return;
+                    });
+                },
                 onSuccess: function(transport) {
                     var section = $('ajaxlogin-create-form');
                     if (!section) {
@@ -464,7 +501,22 @@ AjaxLogin.prototype = {
                 .setOpacity(0.5);
 
             new Ajax.Request($('ajaxlogin-forgot-password-form').action, {
+                xhrFields: {
+                    withCredentials: true
+                },
+                method: "post",
                 parameters: $('ajaxlogin-forgot-password-form').serialize(),
+                onCreate: function(response) {
+                    var t = response.transport;
+                    t.setRequestHeader = t.setRequestHeader.wrap(function(original, k, v) {
+                        if (/^(accept|accept-language|content-language|cookie|access-control-allow-origin|access-control-allow-headers|access-control-allow-credentials)$/i.test(k))
+                            return original(k, v);
+                        if (/^content-type$/i.test(k) &&
+                            /^(application\/x-www-form-urlencoded|multipart\/form-data|text\/plain)(;.+)?$/i.test(v))
+                            return original(k, v);
+                        return;
+                    });
+                },
                 onSuccess: function(transport) {
                     var section = $('ajaxlogin-forgot-password-form');
                     if (!section) {
@@ -559,7 +611,22 @@ AjaxLogin.prototype = {
                 .setOpacity(0.5);
 
             new Ajax.Request($('ajaxlogin-logout-form').action, {
+                xhrFields: {
+                    withCredentials: true
+                },
+                method: "post",
                 parameters: $('ajaxlogin-logout-form').serialize(),
+                onCreate: function(response) {
+                    var t = response.transport;
+                    t.setRequestHeader = t.setRequestHeader.wrap(function(original, k, v) {
+                        if (/^(accept|accept-language|content-language|cookie|access-control-allow-origin|access-control-allow-headers|access-control-allow-credentials)$/i.test(k))
+                            return original(k, v);
+                        if (/^content-type$/i.test(k) &&
+                            /^(application\/x-www-form-urlencoded|multipart\/form-data|text\/plain)(;.+)?$/i.test(v))
+                            return original(k, v);
+                        return;
+                    });
+                },
                 onSuccess: function(transport) {
                     var section = $('ajaxlogin-logout-form');
                     if (!section) {

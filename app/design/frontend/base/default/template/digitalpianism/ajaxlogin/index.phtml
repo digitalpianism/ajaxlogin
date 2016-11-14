@@ -3,7 +3,7 @@
         <div class="page-title">
             <span><?php echo $this->__('Login into your Account') ?></span>
         </div>
-        <form action="<?php echo $this->getUrl('ajaxlogin/index/login', array('_secure'=>(!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS']==='on'))) ?>" method="post" id="ajaxlogin-login-form">
+        <form action="<?php echo $this->getUrl('ajaxlogin/index/login', array('_secure'=>true)) ?>" method="post" id="ajaxlogin-login-form">
             <div class="content">
                 <ul class="form-list">
                     <li>
@@ -45,7 +45,7 @@
         <div class="page-title">
             <span><?php echo $this->__('Forgot Your Password?') ?></span>
         </div>
-        <form action="<?php echo $this->getUrl('ajaxlogin/index/forgotpassword', array('_secure'=>(!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS']==='on'))) ?>" method="post" id="ajaxlogin-forgot-password-form">
+        <form action="<?php echo $this->getUrl('ajaxlogin/index/forgotpassword', array('_secure'=>true)) ?>" method="post" id="ajaxlogin-forgot-password-form">
             <div class="content">
                 <?php
                 $customerHelper = Mage::helper('customer');
@@ -87,7 +87,7 @@
         <div class="page-title">
             <span><?php echo $this->__('Create an Account') ?></span>
         </div>
-        <form action="<?php echo $this->getUrl('ajaxlogin/index/create', array('_secure'=>(!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS']==='on'))) ?>" method="post" id="ajaxlogin-create-form">
+        <form action="<?php echo $this->getUrl('ajaxlogin/index/create', array('_secure'=>true)) ?>" method="post" id="ajaxlogin-create-form">
             <?php echo $this->getChildHtml(); ?>
         </form>
         <script type="text/javascript">
@@ -103,7 +103,7 @@
         <div class="page-title">
             <span><?php echo $this->__('Logout from your Account') ?></span>
         </div>
-        <form action="<?php echo $this->getUrl('ajaxlogin/index/logout', array('_secure'=>(!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS']==='on'))) ?>" method="post" id="ajaxlogin-logout-form">
+        <form action="<?php echo $this->getUrl('ajaxlogin/index/logout', array('_secure'=>true)) ?>" method="post" id="ajaxlogin-logout-form">
             <div class="content">
                <p><?php echo $this->__('Are you sure you want to log out ?') ?></p>
             </div>

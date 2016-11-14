@@ -2,7 +2,7 @@
 <config>
     <modules>
         <DigitalPianism_AjaxLogin>
-            <version>0.2.7</version>
+            <version>0.3.0</version>
         </DigitalPianism_AjaxLogin>
     </modules>
     <global>
@@ -27,6 +27,9 @@
                 </args>
             </ajaxlogin>
         </routers>
+        <secure_url>
+            <ajaxlogin>/ajaxlogin</ajaxlogin>
+        </secure_url>
         <layout>
             <updates>
                 <DigitalPianism_AjaxLogin>
