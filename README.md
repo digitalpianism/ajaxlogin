@@ -12,6 +12,10 @@ https://www.magentocommerce.com/magento-connect/ajax-popup-for-login-registratio
 
 # Release Notes
 
+## 0.3.1
+
+- Fix a bug where the module would not work with confirmation email enabled: https://github.com/digitalpianism/ajaxlogin/issues/2
+
 ## 0.3.0
 
 - Secure all controller calls to use HTTPS
